@@ -1,0 +1,27 @@
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+
+body{
+	font-family: 'Arial', sans-serif;
+	font-size: 15px;
+}
+
+hr{
+	margin: 7px 0;
+}
+
+/* Override Bootstrap box-sizing */
+*{ -webkit-box-sizing: content-box;-moz-box-sizing: content-box; box-sizing: content-box; }
+*:after{ -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
+*:before,
+
+h1{
+	font-family: 'Dancing Script', cursive;
+	font-size: 25px;
+}
+
+h2{
+	font-family: 'Dancing Script', cursive;
+	font-size: 25px;
+}

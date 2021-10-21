@@ -1,0 +1,198 @@
+body, html{ margin: 0; padding: 0; overflow: hidden; }
+
+/* Containers and main layout */
+
+#main-container{
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#panel-left{
+	min-width: 72px;
+	max-width: 72px;
+	background-color: #D3D3D3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 40px;
+	padding-top: 32px;
+}
+
+#panel-main{
+	background-color: white;
+	flex-grow: 1;
+	overflow: scroll;
+}
+
+#panel-right{
+	min-width:  280px;	
+	max-width:  280px;	
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+
+	box-shadow: 0 0 10px 0;
+}
+
+/* ====================================================================================== *\
+   Left panel 
+\* ====================================================================================== */
+#panel-left img{
+	width: 32px;
+	hight: 32px;
+}
+
+#panel-left .avatar{
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+
+/* ====================================================================================== *\
+   Main panel 
+\* ====================================================================================== */
+
+#panel-main #view-multiple{
+	display: flex;
+	flex-direction: row;
+	padding-top: 20px;
+}
+
+#panel-main #view-multiple .day{
+	width: 250px;
+	padding: 0 25px;
+}
+
+#panel-main #view-single{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-top: 20px;
+	scrollbar-width: none;
+}
+
+#panel-main #view-single .day{
+	width: 70%;
+}
+
+#panel-main .day .top-bar{
+	
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+#panel-main .day .top-bar .title{
+	font-family: 'Dancing Script', cursive;
+	font-size: 30px;
+	margin-right: 20px;
+}
+
+
+#panel-main .day .meal{
+	font-weight: bold;
+	margin: 30px 0 10px 0;
+}
+
+
+/* ====================================================================================== *\
+   Right panel 
+\* ====================================================================================== */
+
+#panel-right #nav{
+	max-height: 48px;
+	min-height: 48px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#panel-right #arrows{
+	min-height: 12px;
+	max-height: 12px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#panel-right #nav img{
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+#panel-right #nav img:hover{
+	filter:  opacity(0.5);
+}
+
+#panel-right .toolbox{
+	flex-grow: 1;
+	background-color: #D3D3D3;
+	border-radius: 10px;
+	padding: 20px 0;
+	overflow: auto;
+	display: none;
+}
+
+#panel-right .toolbox.selected{
+	display: flex;
+}
+
+#panel-right .toolbox .scrollable{
+	overflow-y: scroll;
+	padding: 0 20px 5px 20px; 
+	scrollbar-width: none;
+	width: 100%;
+}
+
+#panel-right .toolbox .title{
+	text-align: center;
+	font-family: 'Dancing Script', cursive;
+	font-size: 26px;
+	margin-bottom: 20px;
+}
+
+#panel-right .toolbox .subtitle{
+	/*text-align: center;*/
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+#panel-right .toolbox p{
+	margin: 10px 0;
+}
+
+#panel-right .toolbox input[type=text]{
+	width: 100%;
+	padding: 10px;
+	background-color: transparent;
+	border-radius: 5px;
+	border: none;
+	background-color: #B3B3B3;
+	box-sizing: border-box;
+}
+
+#panel-right .triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 12px solid #D3D3D3;
+	visibility: hidden;
+}
+
+#panel-right .triangle-up.selected{
+	visibility: visible;
+}
+

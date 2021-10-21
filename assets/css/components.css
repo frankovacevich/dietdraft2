@@ -1,0 +1,113 @@
+
+
+/* ====================================================================================== *\
+   Bootstrap buttons
+\* ====================================================================================== */
+
+.btn{ border-radius: 19px; }
+
+.btn, .dropdown, .dropdown-menu{
+	font-size: 14px;
+}
+
+.dropdown, .dropdown-menu *{ -webkit-box-sizing: border-box;-moz-box-sizing: border-box; box-sizing: border-box; }
+.dropdown, .dropdown-menu *:after{ -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.dropdown, .dropdown-menu *:before,
+
+
+/* ====================================================================================== *\
+   Round button
+\* ====================================================================================== */
+
+.round-btn{
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	border: 1px solid black;
+	margin-left: 8px;
+}
+
+.round-btn img{
+	width: 16px;
+	height: 16px;
+}
+
+
+
+/* ====================================================================================== *\
+   Food item
+\* ====================================================================================== */
+
+.food-item{
+	width:  100%;
+	height:  26px;
+	border-radius: 5px;
+	border: none;
+	background-color: #B3B3B3;
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	box-sizing: border-box;
+	align-items: center;
+	margin-top: 3px;
+}
+
+.food-item .name{
+	padding: 0 5px;
+	cursor: default;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 30px;
+	line-height: 30px;
+	white-space: nowrap;
+}
+
+.food-item .multiplier{
+	color: gray;
+}
+
+.food-item .stat{
+	width: 62.5px;
+	text-align: center;
+}
+
+.food-item .stat-r{
+	text-align: right;
+	padding-right: 5px;
+	white-space: nowrap;
+}
+
+/* ====================================================================================== *\
+   Food stats
+\* ====================================================================================== */
+
+.food-stats{
+	width: 250px;
+	height: 64px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.food-stats td{
+	padding: 0 5px;
+	width: 25%;
+}
+
+.food-stats .bar{
+	height: 10px;
+	width: 100%;
+	border-radius: 5px;
+	background-color: #B3B3B3;
+}
+
+.food-stats .b{
+	height: 10px;
+	border-radius: 5px;
+	max-width: 40px;
+	min-width: 0;
+}
+
