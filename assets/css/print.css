@@ -1,0 +1,24 @@
+@media print{
+    @page{ margin: 0.3in }
+    body, html{ margin: 0; padding: 0; overflow: auto; }
+    #main-container{ position: static; display: block; overflow: auto; width: auto; height: auto; }
+    #panel-left{ display: none; }
+    #panel-right{ display: none; }
+    #panel-main{ overflow: auto; display: block; }
+    #view-multiple{ margin: 0px; display: block !important; position: static; }
+    #view-multiple .food-stats{ display: none; }
+    .day{ display: inline-block; vertical-align: top; }
+
+    #panel-main #view-multiple .day{
+        min-width: 216px;
+        max-width: 216px;
+    }
+
+    #view-multiple .food-item .stat-r{
+        display: none;
+    }
+    #view-multiple .day .meal{
+        margin-top:  15px;
+    }
+    #view-multiple .day .top-bar .title{ font-size: 20px; }
+}

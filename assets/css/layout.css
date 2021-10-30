@@ -15,18 +15,20 @@ body, html{ margin: 0; padding: 0; overflow: hidden; }
 #panel-left{
 	min-width: 72px;
 	max-width: 72px;
-	background-color: #D3D3D3;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 40px;
 	padding-top: 32px;
+	box-shadow: 0 0 10px 0;
+	z-index: 99;
 }
 
 #panel-main{
 	background-color: white;
 	flex-grow: 1;
 	overflow: scroll;
+	
 }
 
 #panel-right{
@@ -36,21 +38,21 @@ body, html{ margin: 0; padding: 0; overflow: hidden; }
 	display: flex;
 	flex-direction: column;
 	padding: 30px;
-
 	box-shadow: 0 0 10px 0;
+	z-index: 99;
 }
 
 /* ====================================================================================== *\
    Left panel 
 \* ====================================================================================== */
 #panel-left img{
-	width: 32px;
-	hight: 32px;
+	width: 28px;
+	hight: 28px;
 }
 
 #panel-left .avatar{
-	width: 44px;
-	height: 44px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -67,7 +69,8 @@ body, html{ margin: 0; padding: 0; overflow: hidden; }
 }
 
 #panel-main #view-multiple .day{
-	width: 250px;
+	min-width: 250px;
+	max-width: 250px;
 	padding: 0 25px;
 }
 
@@ -75,7 +78,8 @@ body, html{ margin: 0; padding: 0; overflow: hidden; }
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	padding-top: 20px;
+	padding-top: 10%;
+	padding-bottom: 10%;
 	scrollbar-width: none;
 }
 
@@ -84,23 +88,29 @@ body, html{ margin: 0; padding: 0; overflow: hidden; }
 }
 
 #panel-main .day .top-bar{
-	
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	margin-bottom: 20px;
 }
 
+
+#panel-main #view-single .top-bar {
+	flex-wrap: wrap;
+}
+
 #panel-main .day .top-bar .title{
 	font-family: 'Dancing Script', cursive;
 	font-size: 30px;
 	margin-right: 20px;
+	min-width: 115px;
 }
 
 
 #panel-main .day .meal{
 	font-weight: bold;
 	margin: 30px 0 10px 0;
+	text-transform: capitalize;
 }
 
 
@@ -127,8 +137,8 @@ body, html{ margin: 0; padding: 0; overflow: hidden; }
 }
 
 #panel-right #nav img{
-	width: 32px;
-	height: 32px;
+	width: 28px;
+	height: 28px;
 	cursor: pointer;
 }
 

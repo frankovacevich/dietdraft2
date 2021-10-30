@@ -1,8 +1,10 @@
 class PlanCalculator{
 
 	constructor(){
-		this.error = 0.0005;
-		this.max_iterations = 1000;
+		this.error = 0.01;
+		this.max_iterations = 500;
+		this.survival_rate = 0.25;
+		this.population_size = 1000;
 
 		this.food_data = [];
 		this.food_data_by_meal = {}; // food data grouped by meal
@@ -53,11 +55,12 @@ class PlanCalculator{
 	}
 	*/
 
-	create_plan(requirements){
+	create_plan(requirements, progress_update = function(percentage){}){
 		let plan = [];
 
 		for(let i = 0; i < requirements.duration; i++){
 			plan.push(this.create_day(requirements));
+			progress_update((i + 1) / requirements.duration);
 		}
 
 		return plan;
@@ -65,40 +68,67 @@ class PlanCalculator{
 
 
 	create_day(requirements){
-		requirements.calories = requirements.protein * 4 + requirements.carbs * 4 + requirements.fat * 9;
 
-		// Copy requirements
-		var req = {};
-		req = Object.assign(req,requirements);
-
-		// aux variables
-		let iter = 0;
-		let max_iterations = this.max_iterations / requirements.duration;
-		let offset = 10;
-		let best_offset = 10;
-		let result = [];
-		let best_result = [];
-		
-		while(offset > this.error){
-			result = [];
-			for(const meal in this.food_data_by_meal){
-				result = result.concat(this.create_meal(requirements, meal));
-			}
-			offset = this.get_requirements_offset_norm(result,requirements);
-			if(best_offset > offset){
-				best_offset = offset;
-				Object.assign(best_result, result);
-			}
-
-			if(iter > max_iterations){ break; }
-			iter += 1;
+		// 1) Generate N random day plans
+		let day_collection = []; // [plan, offset]
+		for(let i=0; i < this.population_size; i++){
+			let day = [];
+			for(const meal in this.food_data_by_meal){ day = day.concat(this.create_meal(requirements, meal)); }
+			day_collection.push([day, this.get_requirements_offset_norm(day, requirements)]);
 		}
 
-		return best_result;
+		// 2) Iterate generating new plans
+		let survival_rate = this.survival_rate;
+		let error_0 = 0;
+
+		for(let k=0; k < this.max_iterations; k++){
+			// 2) Select the fittest f*N
+
+			// calculate how many survivors and newborns there will be
+			let n_survived = Math.ceil(survival_rate * this.population_size);
+			let n_newborns = this.population_size - n_survived;
+
+			// sort population by fitness and kill the unfit
+			day_collection = day_collection.sort(function(a, b){ return a[1]-b[1] });
+			day_collection = day_collection.slice(0, n_survived);
+
+			// break if error limit is reached
+			if(day_collection[0][1] < this.error) break;
+
+			// calculate new survival rate for next iteration
+			// (a big survival rate gives a wider range of food but increases the error)
+			if(error_0 == 0) error_0 = day_collection[0][1];
+			survival_rate = 0.05 + (day_collection[0][1] - this.error) * (this.survival_rate - 0.05) / (error_0 - this.error);
+			if(survival_rate > this.survival_rate) survival_rate = this.survival_rate;
+
+			//Mate the surviving plans to produce N new plans
+			let new_day_collection = [];
+			for(let i=0; i < n_newborns; i++){
+				let parents = this.get_random_subarray(day_collection, Object.keys(C.food_data_by_meal).length); // randomly chosen parents
+				let child = []; // offspring
+				let j = 0;
+				for(const meal in this.food_data_by_meal){
+					child = child.concat(parents[j][0].filter(item => item.meal == meal));
+					j++;
+				}
+				new_day_collection.push([child, this.get_requirements_offset_norm(child, requirements)]);
+			}
+
+			day_collection = new_day_collection;
+		}
+
+		day_collection = day_collection.sort(function(a, b){ return a[1]-b[1] });
+
+		let r = day_collection[0][0]
+		return r;
+
 	}
 
-	// creates a meal randomly
 	create_meal(requirements, meal){
+		/*
+		Randomly creates a meal
+		*/
+
 		if(!(meal in this.food_data_by_meal)) return [];
 		requirements.calories = requirements.protein * 4 + requirements.carbs * 4 + requirements.fat * 9;
 
@@ -133,8 +163,15 @@ class PlanCalculator{
 			totals = this.get_totals(reduced_food_data);
 		}
 
-		for(const item in reduced_food_data){ reduced_food_data[item].meal = meal; }
-		return reduced_food_data;
+		// copy array and set meals
+		let new_array = [];
+		for(const i in reduced_food_data){ 
+			let item = reduced_food_data[i];
+			let new_item = Object.assign({}, item);
+			new_item.meal = meal;
+			new_array.push(new_item)
+		}
+		return new_array;
 	}
 
 
@@ -167,7 +204,7 @@ class PlanCalculator{
 	get_requirements_offset(food_list, requirements){
 		let totals = this.get_totals(food_list);
 
-		let offset = {protein:0, fat:0, carbs:0};
+		let offset = {protein:0, fat:0, carbs:0, calories:0};
 		if(requirements["calculation_method"] == "prioritize_protein_intake") offset = {calories:0, protein:0};
 		if(requirements["calculation_method"] == "prioritize_carbs_intake") offset = {calories:0, carbs:0};
 		if(requirements["calculation_method"] == "match_calories_only") offset = {calories:0};
@@ -179,9 +216,12 @@ class PlanCalculator{
 	// given a food list, calculate it's total calories, proteins, fat and carbs
 	get_totals(food_list){
 		let result = {calories:0, protein:0, fat:0, carbs:0};
-		for(const food in food_list){
+		for(const f in food_list){
+			let food = food_list[f];
+			if(!("calories" in food)){ food.calories = food.protein * 4 + food.carbs * 4 + food.fat * 9 }
+			if(!("multiplier" in food)){ food.multiplier = 1; }
 			for(const item in result){
-				result[item] += food_list[food][item] * food_list[food]["multiplier"];
+				result[item] += food[item] * food["multiplier"];
 			}
 		}
 		return result;

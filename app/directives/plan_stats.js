@@ -1,3 +1,32 @@
+app.directive('daystats', function(){
+
+	return {
+		scope:{
+			day: "=day",
+			requirements: "=requirements",
+		},
+	
+
+		controller: function($scope){
+			
+			$scope.get_totals = function(p){
+				let sum = 0
+				for(const f in $scope.day){
+					if(f == "$$hashKey") continue
+					let food = $scope.day[f];
+					sum += food[p];
+				}
+				return sum
+			}
+
+		},
+
+		template: '<planstats prot="{{ get_totals(\'protein\') }}" carbs="{{ get_totals(\'carbs\') }}" fat="{{ get_totals(\'fat\') }}" protreq="{{ requirements.protein }}" carbsreq="{{ requirements.carbs }}" fatreq="{{ requirements.fat }}"></planstats>',
+	}
+
+});
+
+
 app.directive('planstats', function(){
 
 	return {
@@ -13,14 +42,13 @@ app.directive('planstats', function(){
 		},
 
 		controller: function($scope){
+
 			$scope.barwidth = function(x){ return 52.5 * 2 * (x - 0.75); };
 	
 			$scope.barcolor = function(x){
-				if(x < 0.8  || x > 1.2) return 'background-color: #dd4d37';
-				if(x < 0.85 || x > 1.15) return 'background-color: #dd8d37';
-				if(x < 0.90 || x > 1.10) return 'background-color: #ddca37';
-				if(x < 0.95 || x > 1.05) return 'background-color: #4dbf0b';
-				return 'background-color: #4dbf0b';
+				if(x < 0.85  || x > 1.15) return 'background-color: #ef476f';  // red
+				if(x < 0.93 || x > 1.07) return 'background-color: #ffd166'; // yellow
+				return 'background-color: #118ab2'; // blue
 			}
 
 			$scope.getkcal = function(prot, fat, carbs){
@@ -31,10 +59,10 @@ app.directive('planstats', function(){
 		template: `
 		<table class='food-stats'>
 			<tr>
-				<td>{{ prot }} g</td>
-				<td>{{ fat }} g</td>
-				<td>{{ carbs }} g</td>
-				<td>{{ getkcal(prot, fat, carbs) }}</td>
+				<td>{{ prot | number:0 }} g</td>
+				<td>{{ fat | number:0 }} g</td>
+				<td>{{ carbs | number:0 }} g</td>
+				<td>{{ getkcal(prot, fat, carbs) | number:0 }}</td>
 			</tr>
 			<tr>
 				<td><div class='bar'><div class='b' style='width: {{ barwidth(prot/protreq) }}px; {{ barcolor(prot/protreq) }};'></div></div></td>

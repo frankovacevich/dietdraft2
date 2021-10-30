@@ -1546,9 +1546,974 @@ userdata = {
 			"calculation_method": "match_all",
 			"goal": "Lose weigth",
 			"duration": 5,
+            "started": "2021-10-01"
 		},
 
-		"plan": [],
+        "meals": [
+            "breakfast",
+            "snack",
+            "lunch",
+            "dinner",
+        ],
+
+		"plan": [
+          [
+            {
+              "name": "🍉 Watermelon (1 medium piece)",
+              "protein": 1,
+              "fat": 0.2,
+              "carbs": 11.9,
+              "price": 6.9,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:126",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥝 Kiwi",
+              "protein": 0.8,
+              "fat": 0.4,
+              "carbs": 10.2,
+              "price": 1.5,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:125",
+              "meal": "snack"
+            },
+            {
+              "name": "🍝 Bolognese sauce",
+              "protein": 6.8,
+              "fat": 12,
+              "carbs": 5.3,
+              "price": 7.6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:53",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥫 Green peas (100g - 1/2 can)",
+              "protein": 8,
+              "fat": 1.4,
+              "carbs": 21.4,
+              "price": 0.6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:111",
+              "meal": "dinner"
+            },
+            {
+              "name": "🥫 Corn (100g - 1/2 can)",
+              "protein": 2.6,
+              "fat": 0.5,
+              "carbs": 21.3,
+              "price": 7.5,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:110",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥩 Burger (patty only)",
+              "protein": 10,
+              "fat": 11,
+              "carbs": 0,
+              "price": 9.7,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:67",
+              "meal": "dinner"
+            },
+            {
+              "name": "🧀 Cheese (1 slice - 25g)",
+              "protein": 7.8,
+              "fat": 8.9,
+              "carbs": 0.4,
+              "price": 6.1,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:43",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥦 Lettuce salad",
+              "protein": 1.2,
+              "fat": 9.3,
+              "carbs": 3,
+              "price": 2.3,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:104",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍝 Pasta (stuffed, 1 plate)",
+              "protein": 18.3,
+              "fat": 17.4,
+              "carbs": 56.4,
+              "price": 0.1,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:51",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥙 Milanesa (soy or similar) (x1)",
+              "protein": 13.3,
+              "fat": 5.4,
+              "carbs": 12.1,
+              "price": 7.5,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:114",
+              "meal": "dinner"
+            }
+          ],
+          [
+            {
+              "name": "🍩 Budín (3 slices)",
+              "protein": 2.1,
+              "fat": 4.6,
+              "carbs": 23.1,
+              "price": 6.2,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:33",
+              "meal": "breakfast"
+            },
+            {
+              "name": "🍞 Toasts (plain) (x1)",
+              "protein": 2.3,
+              "fat": 0.8,
+              "carbs": 9.9,
+              "price": 7.1,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:5",
+              "meal": "breakfast"
+            },
+            {
+              "name": "🥤 Coca-Cola (355ml - 1 can)",
+              "protein": 0,
+              "fat": 0,
+              "carbs": 31,
+              "price": 7,
+              "active": true,
+              "meals": [
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:128",
+              "meal": "snack"
+            },
+            {
+              "name": "🥫 Tuna (60g - 1/2 small can)",
+              "protein": 15,
+              "fat": 0,
+              "carbs": 0,
+              "price": 0.9,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:44",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥫 Kidney beans (100g - 1/2 can)",
+              "protein": 7,
+              "fat": 0.8,
+              "carbs": 17.9,
+              "price": 6.8,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:112",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥚 Omelette (3 eggs)",
+              "protein": 22.1,
+              "fat": 24.5,
+              "carbs": 1.3,
+              "price": 4.7,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:42",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍟 Nuggets (fish, chicken) (x5)",
+              "protein": 10.2,
+              "fat": 18,
+              "carbs": 8.6,
+              "price": 9.5,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:93",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥫 Lentils (100g - 1/2 can)",
+              "protein": 7.7,
+              "fat": 0.3,
+              "carbs": 16.6,
+              "price": 7.9,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:108",
+              "meal": "dinner"
+            },
+            {
+              "name": "🍗 Chicken breast (100g)",
+              "protein": 30.9,
+              "fat": 2.6,
+              "carbs": 0,
+              "price": 0,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:58",
+              "meal": "snack"
+            },
+            {
+              "name": "🥕 Carrot salad + Boiled egg",
+              "protein": 8.1,
+              "fat": 16.2,
+              "carbs": 4.1,
+              "price": 4.9,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:101",
+              "meal": "dinner"
+            },
+            {
+              "name": "🥟 Empanada",
+              "protein": 8.7,
+              "fat": 14.2,
+              "carbs": 24.1,
+              "price": 6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:94",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥦 Green peas + egg + onions",
+              "protein": 7.3,
+              "fat": 4.6,
+              "carbs": 7.4,
+              "price": 7.5,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:105",
+              "meal": "lunch"
+            }
+          ],
+          [
+            {
+              "name": "🥓 Bacon (2 strips)",
+              "protein": 6,
+              "fat": 9.1,
+              "carbs": 0.2,
+              "price": 9.6,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:25",
+              "meal": "breakfast"
+            },
+            {
+              "name": "🌰 Sunflower seeds (1 handful)",
+              "protein": 2,
+              "fat": 6.3,
+              "carbs": 2.7,
+              "price": 6.6,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:12",
+              "meal": "snack"
+            },
+            {
+              "name": "🥚 Boiled egg",
+              "protein": 6.1,
+              "fat": 5.6,
+              "carbs": 0.1,
+              "price": 9.6,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:41",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍟 Nachos with guacamole",
+              "protein": 9.5,
+              "fat": 19,
+              "carbs": 32.6,
+              "price": 4.6,
+              "active": true,
+              "meals": [
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:36",
+              "meal": "snack"
+            },
+            {
+              "name": "🍪 Crackers (x5)",
+              "protein": 2,
+              "fat": 7.9,
+              "carbs": 18.3,
+              "price": 2.3,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:29",
+              "meal": "snack"
+            },
+            {
+              "name": "🥑 Avocado (75g - half fruit)",
+              "protein": 2.3,
+              "fat": 10.5,
+              "carbs": 8.1,
+              "price": 7.2,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:45",
+              "meal": "snack"
+            },
+            {
+              "name": "🥕 Carrots + onions + cream",
+              "protein": 2.1,
+              "fat": 5.3,
+              "carbs": 11,
+              "price": 6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:100",
+              "meal": "dinner"
+            },
+            {
+              "name": "🍯 Peanut butter, low sugar (1tbsp - 20g)",
+              "protein": 5,
+              "fat": 11,
+              "carbs": 2.8,
+              "price": 1,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:48",
+              "meal": "dinner"
+            },
+            {
+              "name": "🍯 Ketchup (2 tbsp - 30g)",
+              "protein": 0,
+              "fat": 3.8,
+              "carbs": 0,
+              "price": 1,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:47",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥙 Milanesa (soy or similar) (x1)",
+              "protein": 13.3,
+              "fat": 5.4,
+              "carbs": 12.1,
+              "price": 7.5,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:114",
+              "meal": "dinner"
+            },
+            {
+              "name": "🥔 Potatoes purée",
+              "protein": 1.8,
+              "fat": 3.8,
+              "carbs": 14.6,
+              "price": 0.8,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:97",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥫 Jardinera salad (100g - 1/2 can)",
+              "protein": 3.8,
+              "fat": 8.4,
+              "carbs": 14.9,
+              "price": 9.3,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:113",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥟 Crepe (ham and cheese) (x2)",
+              "protein": 15.7,
+              "fat": 37.8,
+              "carbs": 20.2,
+              "price": 9.6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:83",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍝 Bolognese sauce",
+              "protein": 6.8,
+              "fat": 12,
+              "carbs": 5.3,
+              "price": 7.6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:53",
+              "meal": "lunch"
+            }
+          ],
+          [
+            {
+              "name": "🌰 Almonds / Walnuts (x10)",
+              "protein": 4.8,
+              "fat": 11.3,
+              "carbs": 4.9,
+              "price": 6.1,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:11",
+              "meal": "breakfast"
+            },
+            {
+              "name": "🌰 Sunflower seeds (1 handful)",
+              "protein": 2,
+              "fat": 6.3,
+              "carbs": 2.7,
+              "price": 6.6,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:12",
+              "meal": "snack"
+            },
+            {
+              "name": "🍩 Donut (x1)",
+              "protein": 1.3,
+              "fat": 10.2,
+              "carbs": 24.2,
+              "price": 9.2,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:34",
+              "meal": "snack"
+            },
+            {
+              "name": "🥑 Avocado (75g - half fruit)",
+              "protein": 2.3,
+              "fat": 10.5,
+              "carbs": 8.1,
+              "price": 7.2,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:45",
+              "meal": "snack"
+            },
+            {
+              "name": "🥤 Iced tea (250ml - 1 spoonful of sugar)",
+              "protein": 1.6,
+              "fat": 0.2,
+              "carbs": 22.2,
+              "price": 5.7,
+              "active": true,
+              "meals": [
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:131",
+              "meal": "snack"
+            },
+            {
+              "name": "🍖 Meatloaf (3 slices)",
+              "protein": 31.67,
+              "fat": 47.19,
+              "carbs": 20.05,
+              "price": 26.6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:80",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥫 Corn (100g - 1/2 can)",
+              "protein": 2.6,
+              "fat": 0.5,
+              "carbs": 21.3,
+              "price": 7.5,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:110",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥦 Spinach, onions and pepper",
+              "protein": 6.9,
+              "fat": 0.7,
+              "carbs": 18.1,
+              "price": 3,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:103",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍗 Chicken breast (100g)",
+              "protein": 30.9,
+              "fat": 2.6,
+              "carbs": 0,
+              "price": 0,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:58",
+              "meal": "snack"
+            },
+            {
+              "name": "🥫 Tuna (60g - 1/2 small can)",
+              "protein": 15,
+              "fat": 0,
+              "carbs": 0,
+              "price": 0.9,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:44",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍯 Peanut butter, low sugar (1tbsp - 20g)",
+              "protein": 5,
+              "fat": 11,
+              "carbs": 2.8,
+              "price": 1,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:48",
+              "meal": "dinner"
+            },
+            {
+              "name": "🥩 Milanesa (beef)",
+              "protein": 53.8,
+              "fat": 14.4,
+              "carbs": 20,
+              "price": 2.6,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:64",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥔 Squash (slices) (x3)",
+              "protein": 2.8,
+              "fat": 7.1,
+              "carbs": 6.1,
+              "price": 9.3,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:99",
+              "meal": "dinner"
+            }
+          ],
+          [
+            {
+              "name": "🍊 Tangerine",
+              "protein": 0.6,
+              "fat": 0.2,
+              "carbs": 9.3,
+              "price": 2.7,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:123",
+              "meal": "breakfast"
+            },
+            {
+              "name": "☕ Coffee with skim milk",
+              "protein": 0.8,
+              "fat": 0.1,
+              "carbs": 4.5,
+              "price": 2.2,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:19",
+              "meal": "snack"
+            },
+            {
+              "name": "🍇 Grapes (x10)",
+              "protein": 0.5,
+              "fat": 0.3,
+              "carbs": 13.6,
+              "price": 0.6,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:124",
+              "meal": "snack"
+            },
+            {
+              "name": "🥐 Blinis (x5)",
+              "protein": 6.23275,
+              "fat": 10.729,
+              "carbs": 30.1775,
+              "price": 4.7,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:24",
+              "meal": "snack"
+            },
+            {
+              "name": "🌰 Almonds / Walnuts (x10)",
+              "protein": 4.8,
+              "fat": 11.3,
+              "carbs": 4.9,
+              "price": 6.1,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:11",
+              "meal": "breakfast"
+            },
+            {
+              "name": "☕ Coffee with skim milk",
+              "protein": 0.8,
+              "fat": 0.1,
+              "carbs": 4.5,
+              "price": 2.2,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:19",
+              "meal": "snack"
+            },
+            {
+              "name": "🍫 Tita",
+              "protein": 1.5,
+              "fat": 4.4,
+              "carbs": 11.3,
+              "price": 8.1,
+              "active": true,
+              "meals": [
+                "snack"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:117",
+              "meal": "snack"
+            },
+            {
+              "name": "🧀 Cheese (1 slice - 25g)",
+              "protein": 7.8,
+              "fat": 8.9,
+              "carbs": 0.4,
+              "price": 6.1,
+              "active": true,
+              "meals": [
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:43",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥕 Carrot salad + Boiled egg",
+              "protein": 8.1,
+              "fat": 16.2,
+              "carbs": 4.1,
+              "price": 4.9,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:101",
+              "meal": "dinner"
+            },
+            {
+              "name": "🥔 Squash (slices) (x3)",
+              "protein": 2.8,
+              "fat": 7.1,
+              "carbs": 6.1,
+              "price": 9.3,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:99",
+              "meal": "dinner"
+            },
+            {
+              "name": "🍟 French fries + ketchup",
+              "protein": 4.8,
+              "fat": 19.5,
+              "carbs": 51.4,
+              "price": 4.9,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:92",
+              "meal": "lunch"
+            },
+            {
+              "name": "🍉 Watermelon (1 medium piece)",
+              "protein": 1,
+              "fat": 0.2,
+              "carbs": 11.9,
+              "price": 6.9,
+              "active": true,
+              "meals": [
+                "breakfast",
+                "snack",
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:126",
+              "meal": "lunch"
+            },
+            {
+              "name": "🥔 Squash (slices) (x3)",
+              "protein": 2.8,
+              "fat": 7.1,
+              "carbs": 6.1,
+              "price": 9.3,
+              "active": true,
+              "meals": [
+                "lunch",
+                "dinner"
+              ],
+              "multiplier": 1,
+              "$$hashKey": "object:99",
+              "meal": "dinner"
+            }
+          ]
+        ],
 	}
 }
 

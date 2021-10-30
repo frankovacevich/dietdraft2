@@ -27,17 +27,15 @@ app.directive('fooditem', function(){
 			<div class='multiplier' ng-if="qty">(x{{ qty }})</div>
 			<div style='flex-grow:1'></div>
 			
-			<div class='stat-r' ng-if="show == 'prot'">{{ prot }} g</div>
-			<div class='stat-r' ng-if="show == 'fat'">{{ fat }} g</div>
-			<div class='stat-r' ng-if="show == 'carbs'">{{ carbs }} g</div>
-			<div class='stat-r' ng-if="show == 'kcal'">{{ getkcal(prot, fat, carbs) }} kcal</div>
+			<div class='stat-r' ng-if="show == 'prot'">{{ prot | number:0 }} g</div>
+			<div class='stat-r' ng-if="show == 'fat'">{{ fat | number:0 }} g</div>
+			<div class='stat-r' ng-if="show == 'carbs'">{{ carbs | number:0 }} g</div>
+			<div class='stat-r' ng-if="show == 'kcal'">{{ getkcal(prot, fat, carbs) | number:0 }} kcal</div>
 
-			<div ng-if="show=='all'">
-				<div class='stat'>{{ prot }}</div>
-				<div class='stat'>{{ fat }}</div>
-				<div class='stat'>{{ carbs }}</div>
-				<div class='stat'>{{ getkcal(prot, fat, carbs) }}</div>
-			</div>
+			<div class='stat' ng-if="show=='all'">{{ prot | number:0 }}</div>
+			<div class='stat' ng-if="show=='all'">{{ fat | number:0 }}</div>
+			<div class='stat' ng-if="show=='all'">{{ carbs | number:0 }}</div>
+			<div class='stat' ng-if="show=='all'">{{ getkcal(prot, fat, carbs) | number:0 }}</div>
 			
 		</div>
 		`,

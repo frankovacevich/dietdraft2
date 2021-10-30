@@ -25,3 +25,6 @@ h2{
 	font-family: 'Dancing Script', cursive;
 	font-size: 25px;
 }
+
+.autohide .c{ opacity: 0; }
+.autohide:hover .c{ opacity: 1; }

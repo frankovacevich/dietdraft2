@@ -16,6 +16,7 @@
 
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/layout.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/print.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/components.css">
 	
 </head>
@@ -23,37 +24,59 @@
 
 	<div id="main-container">
 
+		<!-- ----------------------------------------------------------------------------------------- -->
 		<!-- Panel Left -->
+		<!-- ----------------------------------------------------------------------------------------- -->
 		<div id="panel-left">
 			
 			{{ name }}
 			<img class="avatar" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.XTTnOdR2SJ-FIZhxw1rN9wHaEo%26pid%3DApi&f=1"/>
 
-			<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Very-Basic-Home-icon.png"/>
+			<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Animals-Dog-House-icon.png"/>
 			<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Very-Basic-Calendar-icon.png"/>
 			<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Printing-Book-icon.png"/>
 			<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Maps-Compass-icon.png"/>
 
 		</div>
 
+		<!-- ----------------------------------------------------------------------------------------- -->
 		<!-- Main panel -->
+		<!-- ----------------------------------------------------------------------------------------- -->
 		<div id="panel-main">
 			<div id="view-multiple">
 			
-				<div class="day" ng-repeat="x in days">
+				<div class="day" ng-repeat="d in current_plan.plan">
+				<!-- <div class="day">-->
 					<div class="top-bar">
-						<div class="title">Day 1 / 15</div>
-						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Very-Basic-Sinchronize-icon.png"/></div>
-						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Printing-Printer-icon.png"/></div>
+						<div class="autohide" style="display: flex; align-items: center;">
+							<div class="title">Day {{ $index + 1 }} / {{ current_plan.plan.length }}</div>
+							<!--div class="round-btn c" ng-click="day_prev()">
+								<img src="https://icons.iconarchive.com/icons/icons8/ios7/48/Arrows-Back-icon.png"/>
+							</div>
+							<div class="round-btn c" ng-click="day_next()">
+								<img src="https://icons.iconarchive.com/icons/icons8/ios7/48/Arrows-Forward-icon.png"/>
+							</div>-->
+							<div class="round-btn c" ng-click="redo_day($index, $event)">
+								<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Very-Basic-Sinchronize-icon.png"/>
+							</div>
+							<div class="round-btn c" ng-click="clear_day($index)">
+								<img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Programming-Delete-Sign-icon.png"/>
+							</div>
+						</div>
 						<div style="flex-grow: 1;"></div>
-						
 					</div>
-					<planstats prot=15 carbs=5 fat=116 protreq=15 carbsreq=20 fatreq=100></planstats>
-					<div class="meal">Breakfast</div>
-					<div class="food-item">Food 1</div>
-					<div class="food-item">Food 1</div>
-					<div class="meal">Snack</div>
-					<fooditem name="🍕 info" qty=1 show="fat"  prot=15 carbs=5 fat=116></fooditem>
+						<daystats day="current_plan.plan[$index]" requirements="current_plan.requirements" ></daystats>
+						
+
+					<div ng-repeat="m in current_plan.meals">
+						<div class="meal">{{ m }}</div>
+						<div ng-repeat="food in current_plan.plan[$parent.$index] | filter: { meal: m } track by $index">
+							<fooditem name="{{ food.name }}" qty="{{ foor.qty }}" show="kcal" prot="{{ food.protein }}" carbs="{{ food.carbs }}" fat="{{ food.fat }}" ></fooditem>	
+						</div>
+					</div>
+
+					
+					
 				</div>
 
 			
@@ -62,7 +85,9 @@
 
 		</div>
 
+		<!-- ----------------------------------------------------------------------------------------- -->
 		<!-- Panel right -->
+		<!-- ----------------------------------------------------------------------------------------- -->
 		<div id="panel-right">
 			
 			<div id="nav">
@@ -82,21 +107,26 @@
 				<div class="scrollable">
 					<div class="title">My Plan</div>
 
-						<div class="subtitle">Current pĺan</div>
+					<!-- Buttons -->
+					<div style="display: flex; justify-content: center;">
+						<div class="round-btn" ng-click="redo_plan()"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Very-Basic-Sinchronize-icon.png"/></div>
+						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Printing-Printer-icon.png"/></div>
+						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Editing-Pencil-icon.png"/></div>
+					</div>
 
-				
+					<div class="subtitle">Current plan (daily average)</div>
 					<hr>
 					<table style="width:100%; text-align: center;">
 						<tr>
-							<td>150g</td>
-							<td>60g</td>
-							<td>55g</td>
-							<td>1500</td>
+							<td>{{ current_plan_totals.protein | number:0 }}g</td>
+							<td>{{ current_plan_totals.fat | number:0 }}g</td>
+							<td>{{ current_plan_totals.carbs | number:0 }}g</td>
+							<td>{{ current_plan_totals.protein * 4 + current_plan_totals.fat * 9 + current_plan_totals.carbs * 4 | number:0 }}</td>
 						</tr>
 						<tr>
-							<td>40%</td>
-							<td>30%</td>
-							<td>30%</td>
+							<td>{{ 100 * current_plan_totals.protein * 4 / (current_plan_totals.protein * 4 + current_plan_totals.fat * 9 + current_plan_totals.carbs * 4) | number:0 }}%</td>
+							<td>{{ 100 * current_plan_totals.fat * 9 / (current_plan_totals.protein * 4 + current_plan_totals.fat * 9 + current_plan_totals.carbs * 4 )| number:0 }}%</td>
+							<td>{{ 100 * current_plan_totals.carbs * 4 / (current_plan_totals.protein * 4 + current_plan_totals.fat * 9 + current_plan_totals.carbs * 4) | number:0 }}%</td>
 							<td>-</td>
 						</tr>
 						<tr>
@@ -111,15 +141,15 @@
 					<hr>
 					<table style="width:100%; text-align: center;">
 						<tr>
-							<td>150g</td>
-							<td>60g</td>
-							<td>55g</td>
-							<td>1500</td>
+							<td>{{ current_plan.requirements.protein }}g</td>
+							<td>{{ current_plan.requirements.fat }}g</td>
+							<td>{{ current_plan.requirements.carbs }}g</td>
+							<td>{{ current_plan.requirements.protein * 4 + current_plan.requirements.fat * 9 + current_plan.requirements.carbs * 4 | number:0 }}</td>
 						</tr>
 						<tr>
-							<td>40%</td>
-							<td>30%</td>
-							<td>30%</td>
+							<td>{{ 100 * current_plan.requirements.protein * 4 / (current_plan.requirements.protein * 4 + current_plan.requirements.fat * 9 + current_plan.requirements.carbs * 4) | number:0 }}%</td>
+							<td>{{ 100 * current_plan.requirements.fat * 9 / (current_plan.requirements.protein * 4 + current_plan.requirements.fat * 9 + current_plan.requirements.carbs * 4 )| number:0 }}%</td>
+							<td>{{ 100 * current_plan.requirements.carbs * 4 / (current_plan.requirements.protein * 4 + current_plan.requirements.fat * 9 + current_plan.requirements.carbs * 4) | number:0 }}%</td>
 							<td>-</td>
 						</tr>
 						<tr>
@@ -130,16 +160,11 @@
 						</tr>
 					</table>
 
-					<p><b>Duration:</b> 15 days</p>
-					<p><b>Type:</b> Match calories</p>
-					<p><b>Started:</b> October 14</p>
-					<p><b>Goal:</b> Drop 30 pounds before summer</p>
+					<p><b>Duration:</b> {{ current_plan.requirements.duration }} days</p>
+					<p><b>Type:</b> {{ current_plan.requirements.calculation_method }}</p>
+					<p><b>Started:</b> {{ current_plan.requirements.started }}</p>
+					<p><b>Goal:</b> {{ current_plan.requirements.goal }}</p>
 
-					<div style="display: flex;">
-						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Very-Basic-Sinchronize-icon.png"/></div>
-						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Printing-Printer-icon.png"/></div>
-						<div class="round-btn"><img src="https://icons.iconarchive.com/icons/icons8/windows-8/48/Editing-Pencil-icon.png"/></div>
-					</div>
 				</div>
 			</div>
 
@@ -172,6 +197,8 @@
 
 	</div>
 
+	<script src="assets/js/data_test.js"></script>
+	<script src="assets/js/plan_calculator.js"></script>
 
 	<script> 
 		var app = angular.module('app', []); 
@@ -189,8 +216,7 @@
 		}
 
 	</script>
-	<script src="assets/js/data_test.js"></script>
-	<script src="assets/js/plan_calculator.js"></script>
+	
 
 	<script>
 		
