@@ -14,6 +14,10 @@
 	<!-- JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+	<!-- DragDrop -->
+	<script src="assets/js/dragdroptouch.js"></script>
+	<script src="assets/js/dragdropfunctionality.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/layout.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/print.css">
@@ -70,9 +74,11 @@
 
 					<div ng-repeat="m in current_plan.meals">
 						<div class="meal">{{ m }}</div>
-						<div ng-repeat="food in current_plan.plan[$parent.$index] | filter: { meal: m } track by $index">
-							<fooditem name="{{ food.name }}" qty="{{ foor.qty }}" show="kcal" prot="{{ food.protein }}" carbs="{{ food.carbs }}" fat="{{ food.fat }}" ></fooditem>	
-						</div>
+						<droparea day="{{ $parent.$index }}" meal="{{ m }}" ndragenter="drag_enter(event)" ndragleave="drag_leave(event)" ndragover="allow_drop(event)" ndrop="drop(event)">
+							<div ng-repeat="food in current_plan.plan[$parent.$parent.$parent.$index] track by $index">
+								<fooditem ng-if="food.meal == m" name="{{ food.name }}" qty="{{ foor.qty }}" show="kcal" prot="{{ food.protein }}" carbs="{{ food.carbs }}" fat="{{ food.fat }}" day="{{ $parent.$parent.$parent.$parent.$parent.$index }}" idx="{{ $index }}" ndragstart="drag_start(event)" ndragend="drag_end(event)"></fooditem>	
+							</div>
+						</droparea>
 					</div>
 
 					

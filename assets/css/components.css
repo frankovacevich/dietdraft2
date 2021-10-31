@@ -29,6 +29,8 @@
 	border: 1px solid black;
 	margin: 0 4px;
 	cursor: pointer;
+
+	-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
 }
 
 .round-btn img{
@@ -54,8 +56,6 @@
   }
 }
 
-
-
 /* ====================================================================================== *\
    Food item
 \* ====================================================================================== */
@@ -72,6 +72,9 @@
 	box-sizing: border-box;
 	align-items: center;
 	margin-top: 3px;
+	pointer-events: auto;
+
+	-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
 }
 
 .food-item .name{
@@ -100,6 +103,22 @@
 	white-space: nowrap;
 }
 
+.food-item div{
+	pointer-events: none;
+}
+
+/* ====================================================================================== *\
+   Food item area
+\* ====================================================================================== */
+
+.dropdown-food-area{
+	padding: 5px; 
+	margin: -5px; 
+	border: 1px dashed transparent; /* changes to gray on drag n drop */ 
+	border-radius: 5px;
+	min-height: 26px;
+}
+
 /* ====================================================================================== *\
    Food stats
 \* ====================================================================================== */
@@ -109,6 +128,7 @@
 	height: 64px;
 	text-align: center;
 	font-size: 14px;
+	-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
 }
 
 .food-stats td{

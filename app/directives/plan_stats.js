@@ -43,10 +43,18 @@ app.directive('planstats', function(){
 
 		controller: function($scope){
 
-			$scope.barwidth = function(x){ return 52.5 * 2 * (x - 0.75); };
+			$scope.barwidth = function(x){ 
+				let W = 52.5;
+				let d = 0.5;
+
+				//let w = 52.5 * 2 * (x - 0.75) + 5; 
+				let w = W * 0.5 * ((x - 1) / d + 1) + 5;
+				if(w < 10) return 10;
+				return w;
+			};
 	
 			$scope.barcolor = function(x){
-				if(x < 0.85  || x > 1.15) return 'background-color: #ef476f';  // red
+				if(x < 0.7  || x > 1.3) return 'background-color: #ef476f';  // red
 				if(x < 0.93 || x > 1.07) return 'background-color: #ffd166'; // yellow
 				return 'background-color: #118ab2'; // blue
 			}

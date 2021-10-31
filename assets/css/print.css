@@ -5,8 +5,8 @@
     #panel-left{ display: none; }
     #panel-right{ display: none; }
     #panel-main{ overflow: auto; display: block; }
-    #view-multiple{ margin: 0px; display: block !important; position: static; }
-    #view-multiple .food-stats{ display: none; }
+    #panel-main #view-multiple{ margin: 0; padding: 0; display: block !important; position: static; }
+    #panel-main #view-multiple .food-stats{ display: none; }
     .day{ display: inline-block; vertical-align: top; }
 
     #panel-main #view-multiple .day{
@@ -14,11 +14,11 @@
         max-width: 216px;
     }
 
-    #view-multiple .food-item .stat-r{
+    #panel-main #view-multiple .food-item .stat-r{
         display: none;
     }
-    #view-multiple .day .meal{
+    #panel-main #view-multiple .day .meal{
         margin-top:  15px;
     }
-    #view-multiple .day .top-bar .title{ font-size: 20px; }
+    #panel-main #view-multiple .day .top-bar .title{ font-size: 20px; }
 }

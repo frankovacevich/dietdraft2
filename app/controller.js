@@ -7,8 +7,6 @@ app.controller('app-ctrl', function($scope) {
 	$scope.current_plan_totals = {protein: 0, fat: 0, carbs: 0, calories: 0};
 
 	// Functions
-
-
 	$scope.day_prev = function(){
 		if($scope.selected_day > 0) $scope.selected_day --;
 	}
@@ -61,5 +59,61 @@ app.controller('app-ctrl', function($scope) {
 	}
 
 	$scope.update_totals();
+
+
+
+
+	// Drag and drop food items
+
+	$scope.drag_start = function(event){
+		event.dataTransfer.setData("day", $(event.target).attr("day"));
+		event.dataTransfer.setData("idx", $(event.target).attr("idx"));
+	}
+
+	$scope.drag_enter = function(event){
+		$(event.target).css("borderColor","gray");
+		$(".food-item").css("pointerEvents","none");
+		$(".dropdown-food-area").children().css("pointerEvents","none");
+		$(".dropdown-food-area").children().children().css("pointerEvents","none");
+		$(".dropdown-food-area").children().children().children().css("pointerEvents","none");
+		$(".dropdown-food-area").children().children().children().children().css("pointerEvents","none");
+
+	}
+
+	$scope.drag_leave = function(event){
+		$(event.target).css("borderColor","transparent");
+		$(".food-item").css("pointerEvents","auto");
+		$(".dropdown-food-area").children().css("pointerEvents","auto");
+		$(".dropdown-food-area").children().children().css("pointerEvents","auto");
+		$(".dropdown-food-area").children().children().children().css("pointerEvents","auto");
+		$(".dropdown-food-area").children().children().children().children().css("pointerEvents","auto");
+
+	}
+
+	$scope.drag_end = function(event){
+
+	}
+
+	$scope.allow_drop = function(event){
+		event.preventDefault();
+	}
+
+	$scope.drop = function(event){
+		event.preventDefault();
+		$(event.target).css("borderColor","transparent");
+		$(".food-item").css("pointerEvents","auto");
+
+		let idx = parseInt(event.dataTransfer.getData("idx"));
+		let day = parseInt(event.dataTransfer.getData("day"));
+		let day_target = $(event.target).attr("day");
+		let meal_target = $(event.target).attr("meal");
+
+		$scope.current_plan.plan[day][idx].meal = meal_target;
+		$scope.current_plan.plan[day_target].push( $scope.current_plan.plan[day][idx] );
+		$scope.current_plan.plan[day].splice(idx, 1);
+
+		$scope.update_totals();
+		$scope.$apply();
+	}
 
 });
